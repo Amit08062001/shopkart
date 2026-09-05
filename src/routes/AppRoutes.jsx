@@ -5,10 +5,7 @@ import {
   } from "react-router-dom";
   
   import MainLayout from "../components/layout/MainLayout";
-  
-  function Home() {
-    return <h1>Home Page</h1>;
-  }
+  import Home from "../pages/Home/Home";
   
   function Products() {
     return <h1>Products Page</h1>;
@@ -44,7 +41,7 @@ import {
   
   function AppRoutes() {
     return (
-        <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
@@ -54,14 +51,8 @@ import {
               element={<ProductDetails />}
             />
             <Route path="/cart" element={<Cart />} />
-            <Route
-              path="/wishlist"
-              element={<Wishlist />}
-            />
-            <Route
-              path="/checkout"
-              element={<Checkout />}
-            />
+            <Route path="/wishlist" element={<Wishlist />} />
+            <Route path="/checkout" element={<Checkout />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/login" element={<Login />} />
             <Route path="/admin" element={<Admin />} />
