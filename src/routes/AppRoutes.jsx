@@ -7,14 +7,12 @@ import {
 import MainLayout from "../components/layout/MainLayout";
 import Home from "../pages/Home/Home";
 import Products from "../components/product/Products";
+import ProductDetails from "../pages/ProductDetails/ProductDetails";
+import Cart from "../pages/Cart/Cart";
 
-function ProductDetails() {
-  return <h1>Product Details</h1>;
-}
 
-function Cart() {
-  return <h1>Cart Page</h1>;
-}
+
+
 
 function Wishlist() {
   return <h1>Wishlist Page</h1>;
