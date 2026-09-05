@@ -508,3 +508,145 @@ a {
     padding-top: 45px;
   }
 }
+
+
+/* ================================
+   Products Page
+================================ */
+
+.products-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+.products-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 40px;
+}
+
+.products-header h1 {
+  margin: 10px 0;
+  font-size: 42px;
+  letter-spacing: -1px;
+}
+
+.products-header p {
+  color: #6b7280;
+}
+
+.product-count {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.products-toolbar {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 18px;
+
+  margin-bottom: 40px;
+}
+
+.products-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px 15px;
+
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.products-search input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+  background: transparent;
+
+  font-size: 15px;
+}
+
+.category-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.category-filter {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+
+  padding: 9px 13px;
+  border-radius: 7px;
+
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.category-filter:hover,
+.category-filter.active {
+  background: #111827;
+  color: #ffffff;
+  border-color: #111827;
+}
+
+.sort-select {
+  padding: 10px 13px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+
+  background: #ffffff;
+  cursor: pointer;
+
+  font-size: 14px;
+}
+
+.no-products {
+  min-height: 300px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.no-products p {
+  margin-top: 8px;
+  color: #6b7280;
+}
+
+@media (max-width: 1000px) {
+  .products-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .category-filters {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .products-page {
+    padding: 40px 16px 60px;
+  }
+
+  .products-header {
+    align-items: start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .products-header h1 {
+    font-size: 34px;
+  }
+}
