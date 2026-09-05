@@ -5,18 +5,17 @@ import {
 } from "react-router-dom";
 
 import MainLayout from "../components/layout/MainLayout";
+
 import Home from "../pages/Home/Home";
+
 import Products from "../components/product/Products";
+
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
+
 import Cart from "../pages/Cart/Cart";
 
+import Wishlist from "../pages/Wishlist/Wishlist";
 
-
-
-
-function Wishlist() {
-  return <h1>Wishlist Page</h1>;
-}
 
 function Checkout() {
   return <h1>Checkout Page</h1>;
@@ -34,13 +33,23 @@ function Admin() {
   return <h1>Admin Dashboard</h1>;
 }
 
+
 function AppRoutes() {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <Routes>
-        <Route element={<MainLayout />}>
+    <BrowserRouter
+      basename={import.meta.env.BASE_URL}
+    >
 
-          <Route path="/" element={<Home />} />
+      <Routes>
+
+        <Route
+          element={<MainLayout />}
+        >
+
+          <Route
+            path="/"
+            element={<Home />}
+          />
 
           <Route
             path="/products"
@@ -52,7 +61,10 @@ function AppRoutes() {
             element={<ProductDetails />}
           />
 
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/cart"
+            element={<Cart />}
+          />
 
           <Route
             path="/wishlist"
@@ -80,7 +92,9 @@ function AppRoutes() {
           />
 
         </Route>
+
       </Routes>
+
     </BrowserRouter>
   );
 }

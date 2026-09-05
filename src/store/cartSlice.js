@@ -4,9 +4,7 @@ const getInitialCart = () => {
   try {
     const savedCart = localStorage.getItem("shopkart-cart");
 
-    return savedCart
-      ? JSON.parse(savedCart)
-      : [];
+    return savedCart ? JSON.parse(savedCart) : [];
   } catch (error) {
     console.error("Failed to load cart:", error);
     return [];

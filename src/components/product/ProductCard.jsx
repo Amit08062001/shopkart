@@ -4,23 +4,54 @@ import {
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
+
 import {
   useDispatch,
   useSelector,
 } from "react-redux";
 
-import { toggleWishlist } from "../../store/wishlistSlice";
+import {
+  toggleWishlist,
+} from "../../store/wishlistSlice";
+
+import {
+  addToCart,
+} from "../../store/cartSlice";
 
 function ProductCard({ product }) {
   const dispatch = useDispatch();
+
+
+  // Wishlist
 
   const wishlistItems = useSelector(
     (state) => state.wishlist.items
   );
 
-  const isWishlisted = wishlistItems.some(
+
+  // Cart
+
+  const cartItems = useSelector(
+    (state) => state.cart.items
+  );
+
+
+  // Is product wishlisted?
+
+  const isWishlisted =
+    wishlistItems.some(
+      (item) => item.id === product.id
+    );
+
+
+  // Is product already in cart?
+
+  const cartItem = cartItems.find(
     (item) => item.id === product.id
   );
+
+
+  // Discount
 
   const discount =
     product.originalPrice > product.price
@@ -32,14 +63,34 @@ function ProductCard({ product }) {
         )
       : 0;
 
+
+  // Wishlist
+
   const handleWishlist = () => {
-    dispatch(toggleWishlist(product));
+    dispatch(
+      toggleWishlist(product)
+    );
   };
+
+
+  // Cart
+
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        ...product,
+        quantity: 1,
+      })
+    );
+  };
+
 
   return (
     <article className="product-card">
 
+
       {/* Image */}
+
       <div className="product-image-wrapper">
 
         {discount > 0 && (
@@ -48,7 +99,9 @@ function ProductCard({ product }) {
           </span>
         )}
 
+
         {/* Wishlist */}
+
         <button
           type="button"
           className={
@@ -63,6 +116,7 @@ function ProductCard({ product }) {
               : "Add to wishlist"
           }
         >
+
           <Heart
             size={18}
             fill={
@@ -71,39 +125,56 @@ function ProductCard({ product }) {
                 : "none"
             }
           />
+
         </button>
+
+
+        {/* Product Image */}
 
         <Link
           to={`/products/${product.id}`}
         >
+
           <img
             src={product.image}
             alt={product.title}
             className="product-image"
           />
+
         </Link>
 
       </div>
 
-      {/* Information */}
+
+      {/* Product Info */}
+
       <div className="product-info">
+
 
         <span className="product-category">
           {product.category}
         </span>
 
+
         <Link
           to={`/products/${product.id}`}
           className="product-title-link"
         >
+
           <h3 className="product-title">
             {product.title}
           </h3>
+
         </Link>
 
+
         {/* Rating */}
+
         <div className="product-rating">
-          <span>★</span>
+
+          <span>
+            ★
+          </span>
 
           <strong>
             {product.rating}
@@ -112,9 +183,12 @@ function ProductCard({ product }) {
           <span>
             ({product.reviews})
           </span>
+
         </div>
 
+
         {/* Price */}
+
         <div className="product-price">
 
           <span className="current-price">
@@ -123,14 +197,18 @@ function ProductCard({ product }) {
 
           {product.originalPrice >
             product.price && (
+
             <span className="original-price">
               ₹{product.originalPrice}
             </span>
+
           )}
 
         </div>
 
-        {/* Details */}
+
+        {/* View Details */}
+
         <Link
           to={`/products/${product.id}`}
           className="view-details-button"
@@ -138,13 +216,21 @@ function ProductCard({ product }) {
           View Details
         </Link>
 
-        {/* Cart */}
+
+        {/* Add To Cart */}
+
         <button
           type="button"
           className="add-cart-button"
+          onClick={handleAddToCart}
         >
+
           <ShoppingCart size={17} />
-          Add to Cart
+
+          {cartItem
+            ? `Add Again (${cartItem.quantity})`
+            : "Add to Cart"}
+
         </button>
 
       </div>

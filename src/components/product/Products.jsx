@@ -1,17 +1,26 @@
 import { useMemo } from "react";
-import { Search, SlidersHorizontal } from "lucide-react";
+import {
+  Search,
+  SlidersHorizontal,
+  X,
+} from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 
 import ProductCard from "./ProductCard";
 import { products } from "../../utils/products";
 
 function Products() {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] =
+    useSearchParams();
 
-  // Read current values from URL
-  const search = searchParams.get("search") || "";
-  const category = searchParams.get("category") || "All";
-  const sort = searchParams.get("sort") || "default";
+  const search =
+    searchParams.get("search") || "";
+
+  const category =
+    searchParams.get("category") || "All";
+
+  const sort =
+    searchParams.get("sort") || "default";
 
   const categories = [
     "All",
@@ -21,14 +30,16 @@ function Products() {
     "Beauty",
   ];
 
-  /*
-   * Update only the required URL parameter.
-   * Existing parameters are preserved.
-   */
   const updateParams = (key, value) => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(
+      searchParams
+    );
 
-    if (!value || value === "All" || value === "default") {
+    if (
+      !value ||
+      value === "All" ||
+      value === "default"
+    ) {
       params.delete(key);
     } else {
       params.set(key, value);
@@ -37,48 +48,70 @@ function Products() {
     setSearchParams(params);
   };
 
-  /*
-   * Filter and sort products.
-   */
   const filteredProducts = useMemo(() => {
-    return products
-      .filter((product) => {
-        const matchesSearch = product.title
+    const result = products.filter((product) => {
+      const searchText =
+        search.trim().toLowerCase();
+
+      const matchesSearch =
+        !searchText ||
+        product.title
           .toLowerCase()
-          .includes(search.toLowerCase());
+          .includes(searchText);
 
-        const matchesCategory =
-          category === "All" ||
-          product.category === category;
+      const matchesCategory =
+        category === "All" ||
+        product.category === category;
 
-        return matchesSearch && matchesCategory;
-      })
-      .sort((a, b) => {
-        if (sort === "price-low") {
-          return a.price - b.price;
-        }
+      return (
+        matchesSearch &&
+        matchesCategory
+      );
+    });
 
-        if (sort === "price-high") {
-          return b.price - a.price;
-        }
+    if (sort === "price-low") {
+      return [...result].sort(
+        (a, b) => a.price - b.price
+      );
+    }
 
-        if (sort === "rating") {
-          return b.rating - a.rating;
-        }
+    if (sort === "price-high") {
+      return [...result].sort(
+        (a, b) => b.price - a.price
+      );
+    }
 
-        return 0;
-      });
+    if (sort === "rating") {
+      return [...result].sort(
+        (a, b) => b.rating - a.rating
+      );
+    }
+
+    return result;
   }, [search, category, sort]);
 
+  const handleSearchChange = (event) => {
+    updateParams(
+      "search",
+      event.target.value
+    );
+  };
+
+  const clearSearch = () => {
+    updateParams("search", "");
+  };
+
   return (
-    <div className="products-page">
+    <main className="products-page">
 
       {/* =========================
           PAGE HEADER
       ========================== */}
 
       <section className="products-header">
+
         <div>
+
           <span className="section-eyebrow">
             OUR COLLECTION
           </span>
@@ -86,15 +119,23 @@ function Products() {
           <h1>All Products</h1>
 
           <p>
-            Discover products selected for everyday
-            shopping.
+            Discover products selected for
+            everyday shopping.
           </p>
+
         </div>
 
         <span className="product-count">
-          {filteredProducts.length} products
+
+          {filteredProducts.length}{" "}
+          {filteredProducts.length === 1
+            ? "product"
+            : "products"}
+
         </span>
+
       </section>
+
 
       {/* =========================
           FILTER TOOLBAR
@@ -105,39 +146,65 @@ function Products() {
         {/* Search */}
 
         <div className="products-search">
-          <Search size={19} />
+
+          <Search size={18} />
 
           <input
             type="text"
             placeholder="Search products..."
             value={search}
-            onChange={(event) =>
-              updateParams("search", event.target.value)
-            }
+            onChange={handleSearchChange}
+            aria-label="Search products"
           />
+
+          {search && (
+            <button
+              type="button"
+              className="clear-search-button"
+              onClick={clearSearch}
+              aria-label="Clear search"
+            >
+              <X size={16} />
+            </button>
+          )}
+
         </div>
+
 
         {/* Categories */}
 
         <div className="category-filters">
-          <SlidersHorizontal size={18} />
 
-          {categories.map((item) => (
-            <button
-              key={item}
-              className={
-                category === item
-                  ? "category-filter active"
-                  : "category-filter"
-              }
-              onClick={() =>
-                updateParams("category", item)
-              }
-            >
-              {item}
-            </button>
-          ))}
+          <SlidersHorizontal
+            size={18}
+          />
+
+          <div className="category-filter-list">
+
+            {categories.map((item) => (
+              <button
+                key={item}
+                type="button"
+                className={
+                  category === item
+                    ? "category-filter active"
+                    : "category-filter"
+                }
+                onClick={() =>
+                  updateParams(
+                    "category",
+                    item
+                  )
+                }
+              >
+                {item}
+              </button>
+            ))}
+
+          </div>
+
         </div>
+
 
         {/* Sort */}
 
@@ -145,9 +212,14 @@ function Products() {
           className="sort-select"
           value={sort}
           onChange={(event) =>
-            updateParams("sort", event.target.value)
+            updateParams(
+              "sort",
+              event.target.value
+            )
           }
+          aria-label="Sort products"
         >
+
           <option value="default">
             Sort by
           </option>
@@ -163,9 +235,34 @@ function Products() {
           <option value="rating">
             Highest Rated
           </option>
+
         </select>
 
       </section>
+
+
+      {/* =========================
+          ACTIVE SEARCH INFO
+      ========================== */}
+
+      {search && (
+        <div className="search-result-info">
+
+          <span>
+            Showing results for{" "}
+            <strong>"{search}"</strong>
+          </span>
+
+          <button
+            type="button"
+            onClick={clearSearch}
+          >
+            Clear
+          </button>
+
+        </div>
+      )}
+
 
       {/* =========================
           PRODUCT GRID
@@ -174,27 +271,54 @@ function Products() {
       <section className="products-list">
 
         {filteredProducts.length > 0 ? (
+
           <div className="product-grid">
-            {filteredProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-              />
-            ))}
+
+            {filteredProducts.map(
+              (product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                />
+              )
+            )}
+
           </div>
+
         ) : (
+
           <div className="no-products">
-            <h2>No products found</h2>
+
+            <div className="no-products-icon">
+              <Search size={28} />
+            </div>
+
+            <h2>
+              No products found
+            </h2>
 
             <p>
-              Try changing your search or category.
+              Try changing your search,
+              category, or sorting option.
             </p>
+
+            <button
+              type="button"
+              className="clear-filters-button"
+              onClick={() =>
+                setSearchParams({})
+              }
+            >
+              Clear All Filters
+            </button>
+
           </div>
+
         )}
 
       </section>
 
-    </div>
+    </main>
   );
 }
 

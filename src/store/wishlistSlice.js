@@ -50,11 +50,11 @@ const wishlistSlice = createSlice({
     toggleWishlist: (state, action) => {
       const product = action.payload;
 
-      const existingItem = state.items.find(
+      const alreadyExists = state.items.some(
         (item) => item.id === product.id
       );
 
-      if (existingItem) {
+      if (alreadyExists) {
         state.items = state.items.filter(
           (item) => item.id !== product.id
         );

@@ -10,7 +10,6 @@ const store = configureStore({
   },
 });
 
-// Save cart + wishlist
 store.subscribe(() => {
   try {
     const state = store.getState();

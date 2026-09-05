@@ -1,13 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import {
   Search,
   Heart,
   ShoppingCart,
   User,
 } from "lucide-react";
+
 import { useSelector } from "react-redux";
 
 function Header() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+
   const cartItems = useSelector(
     (state) => state.cart.items
   );
@@ -16,6 +20,8 @@ function Header() {
     (state) => state.wishlist.items
   );
 
+  const search = searchParams.get("search") || "";
+
   const cartCount = cartItems.reduce(
     (total, item) => total + item.quantity,
     0
@@ -23,34 +29,69 @@ function Header() {
 
   const wishlistCount = wishlistItems.length;
 
+  const handleSearch = (event) => {
+    const value = event.target.value;
+
+    if (location.pathname !== "/products") {
+      const params = new URLSearchParams();
+
+      if (value.trim()) {
+        params.set("search", value.trim());
+      }
+
+      window.location.href = `/shopkart/products${
+        params.toString()
+          ? `?${params.toString()}`
+          : ""
+      }`;
+
+      return;
+    }
+
+    const params = new URLSearchParams();
+
+    if (value.trim()) {
+      params.set("search", value);
+    }
+
+    setSearchParams(params);
+  };
+
   return (
     <header className="header">
+
       <div className="header-container">
 
-        {/* Logo */}
-        <Link to="/" className="logo">
+        <Link
+          to="/"
+          className="logo"
+        >
           ShopKart
         </Link>
 
-        {/* Search */}
+
         <div className="search-box">
+
           <Search size={20} />
 
           <input
             type="text"
             placeholder="Search products..."
+            value={search}
+            onChange={handleSearch}
           />
+
         </div>
 
-        {/* Actions */}
+
         <nav className="header-actions">
 
-          {/* Wishlist */}
           <Link
             to="/wishlist"
             className="header-wishlist"
-            aria-label={`Wishlist, ${wishlistCount} items`}
+            aria-label="Wishlist"
           >
+
             <Heart size={22} />
 
             {wishlistCount > 0 && (
@@ -58,9 +99,10 @@ function Header() {
                 {wishlistCount}
               </span>
             )}
+
           </Link>
 
-          {/* Account */}
+
           <Link
             to="/login"
             aria-label="Account"
@@ -68,12 +110,13 @@ function Header() {
             <User size={22} />
           </Link>
 
-          {/* Cart */}
+
           <Link
             to="/cart"
             className="header-cart"
-            aria-label={`Shopping cart, ${cartCount} items`}
+            aria-label="Shopping cart"
           >
+
             <ShoppingCart size={22} />
 
             {cartCount > 0 && (
@@ -81,11 +124,13 @@ function Header() {
                 {cartCount}
               </span>
             )}
+
           </Link>
 
         </nav>
 
       </div>
+
     </header>
   );
 }
