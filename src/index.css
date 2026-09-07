@@ -3300,3 +3300,955 @@ img {
   }
 
 }
+
+.continue-shopping-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 42px;
+
+  padding: 0 16px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+
+  background: #ffffff;
+  color: #111827;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.continue-shopping-button:hover {
+  border-color: #111827;
+
+  background: #f9fafb;
+
+  transform: translateY(-1px);
+}
+
+.continue-shopping-button svg {
+  width: 17px;
+  height: 17px;
+
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   PRODUCTS - FILTER ICON ALIGNMENT
+========================================================= */
+
+.category-filter-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  flex-wrap: wrap;
+
+  margin-bottom: 25px;
+}
+
+/* Filter icon wrapper / icon */
+.category-filter-list > svg {
+  flex-shrink: 0;
+
+  width: 18px;
+  height: 18px;
+
+  margin-right: 2px;
+
+  align-self: center;
+}
+
+
+/* =========================================================
+   PRODUCTS TOOLBAR - DESKTOP ALIGNMENT
+========================================================= */
+
+@media (min-width: 701px) {
+
+  .products-toolbar {
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) auto minmax(170px, 220px);
+
+    align-items: center;
+
+    gap: 28px;
+  }
+
+  .products-search {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .category-filter-list {
+    margin: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-wrap: nowrap;
+
+    gap: 8px;
+  }
+
+  .category-filter {
+    flex-shrink: 0;
+
+    white-space: nowrap;
+  }
+
+  .sort-select {
+    width: 100%;
+
+    min-width: 170px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .products-toolbar {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 16px;
+  }
+
+  .category-filter-list {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: nowrap;
+
+    overflow-x: auto;
+
+    margin: 0;
+
+    padding-bottom: 5px;
+
+    scrollbar-width: none;
+  }
+
+  .category-filter-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-filter {
+    flex-shrink: 0;
+
+    white-space: nowrap;
+  }
+
+}
+
+/* =========================================================
+   PRODUCTS TOOLBAR - FINAL ALIGNMENT
+========================================================= */
+
+.products-toolbar {
+  display: grid;
+
+  grid-template-columns:
+    minmax(280px, 1fr)
+    auto
+    220px;
+
+  align-items: center;
+
+  gap: 28px;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.products-search {
+  width: 100%;
+  max-width: none;
+
+  min-height: 46px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.products-search input {
+  min-width: 0;
+  width: 100%;
+}
+
+
+/* =========================
+   CATEGORY AREA
+========================= */
+
+.category-filters {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 0;
+}
+
+
+/* FILTER ICON + TEXT */
+
+.category-filter-heading {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  flex-shrink: 0;
+
+  color: #222;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.category-filter-heading svg {
+  width: 18px;
+  height: 18px;
+
+  flex-shrink: 0;
+}
+
+
+/* CATEGORY BUTTONS */
+
+.category-filter-list {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  flex-wrap: nowrap;
+
+  min-width: 0;
+
+  margin: 0;
+}
+
+.category-filter {
+  flex-shrink: 0;
+
+  white-space: nowrap;
+}
+
+
+/* =========================
+   SORT
+========================= */
+
+.sort-select {
+  width: 100%;
+
+  min-width: 0;
+
+  height: 46px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PRODUCTS - TABLET / SMALL DESKTOP
+========================================================= */
+
+@media (max-width: 1050px) {
+
+  .products-toolbar {
+    grid-template-columns:
+      minmax(240px, 1fr)
+      minmax(0, auto)
+      180px;
+
+    gap: 18px;
+  }
+
+  .category-filter-heading span {
+    display: none;
+  }
+
+  .category-filters {
+    gap: 8px;
+  }
+
+}
+
+
+/* =========================================================
+   PRODUCTS - MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .products-toolbar {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 16px;
+  }
+
+
+  /* SEARCH */
+
+  .products-search {
+    width: 100%;
+
+    min-height: 46px;
+  }
+
+
+  /* CATEGORY */
+
+  .category-filters {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    overflow: hidden;
+  }
+
+  .category-filter-heading {
+    width: 20px;
+
+    flex-shrink: 0;
+  }
+
+  .category-filter-heading span {
+    display: none;
+  }
+
+  .category-filter-list {
+    flex: 1;
+
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    overflow-x: auto;
+
+    flex-wrap: nowrap;
+
+    padding-bottom: 5px;
+
+    scrollbar-width: none;
+  }
+
+  .category-filter-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-filter {
+    flex-shrink: 0;
+
+    white-space: nowrap;
+
+    padding: 9px 14px;
+  }
+
+
+  /* SORT */
+
+  .sort-select {
+    width: 100%;
+
+    height: 46px;
+  }
+
+}
+
+/* =========================================================
+   PRODUCTS - FINAL MOBILE + SORT FIX
+========================================================= */
+
+/* =========================
+   SORT SELECT
+========================= */
+
+.sort-select {
+  width: 100%;
+
+  min-width: 0;
+
+  height: 46px;
+
+  box-sizing: border-box;
+
+  padding: 0 42px 0 14px;
+
+  border: 1px solid #ddd;
+  border-radius: 9px;
+
+  background-color: #fff;
+
+  color: #222;
+
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+
+/* Keep native dropdown arrow inside the field */
+
+@media (max-width: 700px) {
+
+  .sort-select {
+    width: 100%;
+
+    height: 46px;
+
+    padding-left: 14px;
+    padding-right: 42px;
+
+    border-radius: 9px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE PRODUCTS TOOLBAR
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .products-toolbar {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 16px;
+  }
+
+
+  /* SEARCH */
+
+  .products-search {
+    width: 100%;
+
+    max-width: none;
+
+    min-height: 46px;
+
+    box-sizing: border-box;
+  }
+
+
+  /* CATEGORY */
+
+  .category-filters {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    overflow: hidden;
+  }
+
+
+  .category-filter-heading {
+    width: 18px;
+
+    min-width: 18px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .category-filter-heading svg {
+    width: 17px;
+    height: 17px;
+  }
+
+
+  .category-filter-list {
+    flex: 1;
+
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    flex-wrap: nowrap;
+
+    overflow-x: auto;
+
+    margin: 0;
+
+    padding: 0 2px 5px 0;
+
+    scrollbar-width: none;
+  }
+
+
+  .category-filter-list::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  .category-filter {
+    flex-shrink: 0;
+
+    white-space: nowrap;
+
+    padding: 9px 14px;
+  }
+
+}
+
+/* =========================================================
+   PRODUCTS - FINAL TOOLBAR
+========================================================= */
+
+.products-toolbar {
+  display: grid;
+
+  grid-template-columns:
+    minmax(280px, 1fr)
+    auto
+    220px;
+
+  align-items: center;
+
+  gap: 28px;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.products-search {
+  width: 100%;
+  max-width: none;
+
+  min-height: 46px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.products-search input {
+  width: 100%;
+  min-width: 0;
+}
+
+
+/* =========================================================
+   CATEGORY FILTERS
+========================================================= */
+
+.category-filters {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 0;
+}
+
+.category-filter-heading {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  flex-shrink: 0;
+
+  color: #222;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.category-filter-heading svg {
+  width: 18px;
+  height: 18px;
+
+  flex-shrink: 0;
+}
+
+.category-filter-list {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  flex-wrap: nowrap;
+
+  min-width: 0;
+
+  margin: 0;
+}
+
+.category-filter {
+  flex-shrink: 0;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   CUSTOM SORT DROPDOWN
+========================================================= */
+
+.sort-dropdown {
+  position: relative;
+
+  width: 220px;
+}
+
+.sort-dropdown-button {
+  width: 100%;
+
+  height: 46px;
+
+  padding: 0 14px;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 12px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 9px;
+
+  background: #fff;
+
+  color: #222;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.sort-dropdown-button:hover {
+  border-color: #bbb;
+}
+
+.sort-dropdown-button.open {
+  border-color: #999;
+
+  box-shadow:
+    0 0 0 3px rgba(0, 0, 0, 0.04);
+}
+
+.sort-chevron {
+  flex-shrink: 0;
+
+  transition:
+    transform 0.2s ease;
+}
+
+.sort-chevron.open {
+  transform: rotate(180deg);
+}
+
+
+/* =========================
+   DROPDOWN MENU
+========================= */
+
+.sort-dropdown-menu {
+  position: absolute;
+
+  top: calc(100% + 7px);
+
+  left: 0;
+
+  z-index: 50;
+
+  width: 100%;
+
+  padding: 5px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #e1e1e1;
+
+  border-radius: 10px;
+
+  background: #fff;
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.10);
+}
+
+
+/* =========================
+   DROPDOWN OPTIONS
+========================= */
+
+.sort-option {
+  width: 100%;
+
+  min-height: 40px;
+
+  padding: 0 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  border: 0;
+
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: #333;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.sort-option:hover {
+  background: #f5f5f5;
+}
+
+.sort-option.active {
+  background: #f1f1f1;
+
+  color: #111;
+
+  font-weight: 600;
+}
+
+.sort-option svg {
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1050px) and (min-width: 701px) {
+
+  .products-toolbar {
+    grid-template-columns:
+      minmax(240px, 1fr)
+      minmax(0, auto)
+      180px;
+
+    gap: 18px;
+  }
+
+  .category-filter-heading span {
+    display: none;
+  }
+
+  .sort-dropdown {
+    width: 180px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .products-toolbar {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 16px;
+  }
+
+
+  /* SEARCH */
+
+  .products-search {
+    width: 100%;
+
+    min-height: 46px;
+  }
+
+
+  /* CATEGORY */
+
+  .category-filters {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    overflow: hidden;
+  }
+
+  .category-filter-heading {
+    width: 18px;
+
+    min-width: 18px;
+
+    flex-shrink: 0;
+  }
+
+  .category-filter-heading span {
+    display: none;
+  }
+
+  .category-filter-list {
+    flex: 1;
+
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    flex-wrap: nowrap;
+
+    overflow-x: auto;
+
+    padding: 0 2px 5px 0;
+
+    scrollbar-width: none;
+  }
+
+  .category-filter-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-filter {
+    flex-shrink: 0;
+
+    white-space: nowrap;
+
+    padding: 9px 14px;
+  }
+
+
+  /* SORT */
+
+  .sort-dropdown {
+    width: 100%;
+  }
+
+  .sort-dropdown-button {
+    width: 100%;
+
+    height: 46px;
+
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .sort-dropdown-menu {
+    top: calc(100% + 7px);
+
+    width: 100%;
+  }
+
+}
