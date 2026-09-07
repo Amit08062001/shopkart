@@ -1,16 +1,70 @@
-# React + Vite
+# 🛒 ShopKart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Modern e-commerce frontend built with React, Vite and Redux Toolkit.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
+[View ShopKart]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+- Product listing
+- Product details
+- Search
+- Category filtering
+- Sorting
+- Wishlist
+- Shopping cart
+- Checkout
+- Order history
+- Login / Logout
+- Protected routes
+- User profile
+- Edit profile
+- LocalStorage persistence
+- Responsive design
+- GitHub Pages deployment
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠 Tech Stack
 
-## Expanding the ESLint configuration
+- React
+- Vite
+- React Router
+- Redux Toolkit
+- React Redux
+- Lucide React
+- CSS
+- GitHub Actions
+- GitHub Pages
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🧠 Architecture
+
+src/
+├── components/
+├── pages/
+├── routes/
+├── store/
+├── utils/
+└── ...
+
+## 📸 Screenshots
+
+Home
+Products
+Product Details
+Cart
+Checkout
+Orders
+Profile
+
+## ⚙️ Run Locally
+
+npm install
+npm run dev
+
+## 🏗 Production Build
+
+npm run build
+
+## 👨‍💻 Author
+
+Amit
