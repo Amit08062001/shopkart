@@ -1,12 +1,22 @@
-import { ArrowRight, ShieldCheck, Truck, Headphones } from "lucide-react";
+import {
+  ArrowRight,
+  ShieldCheck,
+  Truck,
+  Headphones,
+  Sparkles,
+} from "lucide-react";
+
 import ProductCard from "../../components/product/ProductCard";
 import { products } from "../../utils/products";
 
 function Home() {
+  const heroProducts = products.slice(0, 3);
+
   return (
     <div className="home-page">
-
-      {/* Hero */}
+      {/* =========================================
+          HERO SECTION
+      ========================================= */}
 
       <section className="hero-section">
         <div className="hero-content">
@@ -21,8 +31,8 @@ function Home() {
           </h1>
 
           <p>
-            Explore carefully selected products across
-            fashion, electronics, home and more.
+            Explore carefully selected products across fashion,
+            electronics, home and more.
           </p>
 
           <a href="#featured-products" className="hero-button">
@@ -31,14 +41,50 @@ function Home() {
           </a>
         </div>
 
+        {/* HERO PRODUCT VISUAL */}
+
         <div className="hero-visual">
-          <div className="hero-circle">
-            SHOP
+          <div className="hero-visual-glow" />
+
+          <div className="hero-badge">
+            <Sparkles size={15} />
+            <span>Trending Now</span>
+          </div>
+
+          <div className="hero-product-stage">
+            {heroProducts.map((product, index) => (
+              <div
+                key={product.id}
+                className={`hero-product hero-product-${index + 1}`}
+              >
+                <div className="hero-product-image">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                  />
+                </div>
+
+                <div className="hero-product-info">
+                  <span>{product.category}</span>
+
+                  <strong>
+                    ₹{product.price}
+                  </strong>
+                </div>
+              </div>
+            ))}
+
+            <div className="hero-floating-text">
+              <span>SHOPKART</span>
+              <strong>New arrivals</strong>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Categories */}
+      {/* =========================================
+          CATEGORIES
+      ========================================= */}
 
       <section className="categories-section">
         <div className="section-heading">
@@ -47,7 +93,9 @@ function Home() {
               EXPLORE
             </span>
 
-            <h2>Shop by category</h2>
+            <h2>
+              Shop by category
+            </h2>
           </div>
         </div>
 
@@ -73,12 +121,14 @@ function Home() {
           <div className="category-card">
             <span>✨</span>
             <h3>Beauty</h3>
-            <p>Feel good, look good</p>
+            <p>Feel good, look good.</p>
           </div>
         </div>
       </section>
 
-      {/* Products */}
+      {/* =========================================
+          FEATURED PRODUCTS
+      ========================================= */}
 
       <section
         className="products-section"
@@ -90,10 +140,15 @@ function Home() {
               TRENDING NOW
             </span>
 
-            <h2>Featured products</h2>
+            <h2>
+              Featured products
+            </h2>
           </div>
 
-          <a href="/shopkart/products" className="view-all">
+          <a
+            href="/shopkart/products"
+            className="view-all"
+          >
             View all
             <ArrowRight size={17} />
           </a>
@@ -109,34 +164,44 @@ function Home() {
         </div>
       </section>
 
-      {/* Benefits */}
+      {/* =========================================
+          BENEFITS
+      ========================================= */}
 
       <section className="benefits-section">
         <div className="benefit">
           <Truck size={30} />
+
           <div>
             <h3>Fast Delivery</h3>
-            <p>Quick delivery to your doorstep.</p>
+            <p>
+              Quick delivery to your doorstep.
+            </p>
           </div>
         </div>
 
         <div className="benefit">
           <ShieldCheck size={30} />
+
           <div>
             <h3>Secure Payments</h3>
-            <p>Your payments are always protected.</p>
+            <p>
+              Your payments are always protected.
+            </p>
           </div>
         </div>
 
         <div className="benefit">
           <Headphones size={30} />
+
           <div>
             <h3>24/7 Support</h3>
-            <p>We're here whenever you need us.</p>
+            <p>
+              We're here whenever you need us.
+            </p>
           </div>
         </div>
       </section>
-
     </div>
   );
 }

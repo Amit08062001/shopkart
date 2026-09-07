@@ -2,10 +2,27 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  pointer-events: none;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+input,
+textarea,
+select {
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
 }
 
 body {
@@ -506,10 +523,10 @@ img {
   padding: 70px 24px;
 
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr 1fr;
 
   align-items: center;
-  gap: 50px;
+  gap: 30px;
 }
 
 .hero-content {
@@ -4249,6 +4266,436 @@ img {
     top: calc(100% + 7px);
 
     width: 100%;
+  }
+
+}
+
+/* =========================================
+   SHOPKART HERO - FINAL PRODUCT VISUAL
+========================================= */
+
+.hero-visual {
+  position: relative;
+
+  width: 100%;
+  min-height: 500px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: visible;
+}
+
+.hero-visual-glow {
+  position: absolute;
+
+  width: 430px;
+  height: 430px;
+
+  border-radius: 50%;
+
+  background: #f3f3f3;
+
+  z-index: 0;
+}
+
+.hero-product-stage {
+  position: relative;
+
+  width: 560px;
+  height: 470px;
+
+  z-index: 2;
+}
+
+/* =========================================
+   PRODUCT CARDS
+========================================= */
+
+.hero-product {
+  position: absolute;
+
+  width: 205px;
+
+  padding: 9px;
+
+  background: #fff;
+
+  border: 1px solid #e9e9e9;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 22px 55px rgba(0, 0, 0, 0.09);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.hero-product:hover {
+  box-shadow:
+    0 30px 65px rgba(0, 0, 0, 0.14);
+}
+
+/* =========================================
+   PRODUCT POSITIONS
+========================================= */
+
+.hero-product-1 {
+  top: 35px;
+  left: 45px;
+
+  transform: rotate(-7deg);
+
+  z-index: 3;
+}
+
+.hero-product-2 {
+  top: 105px;
+  right: 35px;
+
+  transform: rotate(6deg);
+
+  z-index: 4;
+}
+
+.hero-product-3 {
+  bottom: 10px;
+  left: 175px;
+
+  transform: rotate(-2deg);
+
+  z-index: 5;
+}
+
+/* =========================================
+   PRODUCT IMAGE
+========================================= */
+
+.hero-product-image {
+  width: 100%;
+  height: 175px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  background: #f7f7f7;
+}
+
+.hero-product-image img {
+  width: 100%;
+  height: 100%;
+
+  padding: 14px;
+
+  object-fit: contain;
+
+  transition: transform 0.3s ease;
+}
+
+.hero-product:hover .hero-product-image img {
+  transform: scale(1.04);
+}
+
+/* =========================================
+   PRODUCT INFO
+========================================= */
+
+.hero-product-info {
+  display: none;
+}
+
+/* =========================================
+   TRENDING BADGE
+========================================= */
+
+.hero-badge {
+  position: absolute;
+
+  top: 28px;
+  right: 45px;
+
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 10px 14px;
+
+  background: #111;
+
+  color: #fff;
+
+  border-radius: 999px;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.13);
+}
+
+.hero-badge svg {
+  flex-shrink: 0;
+}
+
+/* =========================================
+   SHOPKART FLOATING LABEL
+========================================= */
+
+.hero-floating-text {
+  position: absolute;
+
+  right: 15px;
+  bottom: 35px;
+
+  z-index: 8;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 3px;
+
+  padding: 12px 15px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border: 1px solid #e8e8e8;
+
+  border-radius: 13px;
+
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.08);
+}
+
+.hero-floating-text span {
+  color: #999;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+}
+
+.hero-floating-text strong {
+  color: #111;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* =========================================
+   DESKTOP BALANCE
+========================================= */
+
+@media (max-width: 1100px) {
+
+  .hero-product-stage {
+    width: 510px;
+    height: 450px;
+  }
+
+  .hero-product {
+    width: 185px;
+  }
+
+  .hero-product-image {
+    height: 160px;
+  }
+
+  .hero-product-1 {
+    left: 25px;
+  }
+
+  .hero-product-2 {
+    right: 20px;
+  }
+
+  .hero-product-3 {
+    left: 150px;
+  }
+
+  .hero-badge {
+    right: 25px;
+  }
+
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+  .hero-section {
+    gap: 10px;
+  }
+
+  .hero-visual {
+    width: 48%;
+
+    min-height: 430px;
+  }
+
+  .hero-visual-glow {
+    width: 360px;
+    height: 360px;
+  }
+
+  .hero-product-stage {
+    width: 450px;
+    height: 410px;
+
+    transform: scale(0.9);
+  }
+
+  .hero-product {
+    width: 180px;
+  }
+
+  .hero-product-image {
+    height: 155px;
+  }
+
+  .hero-badge {
+    top: 20px;
+    right: 10px;
+  }
+
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 760px) {
+
+  .hero-section {
+    flex-direction: column;
+
+    gap: 25px;
+
+    padding-top: 40px;
+  }
+
+  .hero-content {
+    width: 100%;
+  }
+
+  .hero-visual {
+    width: 100%;
+
+    min-height: 410px;
+
+    margin-top: 0;
+  }
+
+  .hero-visual-glow {
+    width: 330px;
+    height: 330px;
+  }
+
+  .hero-product-stage {
+    width: 430px;
+    height: 390px;
+
+    transform: scale(0.85);
+  }
+
+  .hero-product-1 {
+    left: 15px;
+  }
+
+  .hero-product-2 {
+    right: 10px;
+  }
+
+  .hero-product-3 {
+    left: 120px;
+  }
+
+  .hero-badge {
+    top: 5px;
+    right: 50%;
+
+    transform: translateX(50%);
+  }
+
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 500px) {
+
+  .hero-section {
+    padding-top: 30px;
+  }
+
+  .hero-visual {
+    min-height: 350px;
+  }
+
+  .hero-visual-glow {
+    width: 280px;
+    height: 280px;
+  }
+
+  .hero-product-stage {
+    width: 360px;
+    height: 335px;
+
+    transform: scale(0.76);
+  }
+
+  .hero-product {
+    width: 175px;
+
+    border-radius: 17px;
+  }
+
+  .hero-product-image {
+    height: 145px;
+  }
+
+  .hero-product-1 {
+    top: 30px;
+    left: 0;
+  }
+
+  .hero-product-2 {
+    top: 85px;
+    right: 0;
+  }
+
+  .hero-product-3 {
+    bottom: 0;
+    left: 92px;
+  }
+
+  .hero-badge {
+    top: -2px;
+
+    padding: 8px 12px;
+
+    font-size: 9px;
+  }
+
+  .hero-floating-text {
+    right: 0;
+    bottom: 0;
+
+    padding: 10px 12px;
   }
 
 }
